@@ -1,3 +1,7 @@
+env:
+  global:
+    - secure: d4aSwXHiBOU36dWmp7aWPeFlxrAUtfVxE6vdanM0fVA2o9Z3qZfbpGkwHl6NgKOgmKhrCaM1Ho9IK3YbZe31vhb7R/le0KNt08KoPSd+cXMhNN6BHAkpSyN5WUxKZ2+wous0aIp8IH/NeWsiINlPuqKLVPqEV2yRKIPjgGkFf6Y=
+
 before_install:
   - curl -O http://static.rust-lang.org/cargo-dist/cargo-nightly-x86_64-unknown-linux-gnu.tar.gz
   - tar xf cargo-nightly-x86_64-unknown-linux-gnu.tar.gz
@@ -12,6 +16,10 @@ install:
 script:
   - cargo build
   - cargo test
+  - cargo doc && mv target/doc doc
+
+after_script:
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && curl http://www.rust-ci.org/artifacts/put?t=$RUSTCI_TOKEN | sh'
 
 branches:
   only: master

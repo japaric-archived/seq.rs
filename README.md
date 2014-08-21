@@ -2,7 +2,7 @@
 
 Macro sugar to initialize almost any collection (`Vec`, `HashMap`, etc).
 
-## [API Docs][docs]
+## [Documentation][docs]
 
 ## Example
 
@@ -35,4 +35,4 @@ seq.rs is dual licensed under the Apache 2.0 license and the MIT license.
 
 See LICENSE-APACHE and LICENSE-MIT for more details.
 
-[docs]: https://japaric.github.io/seq.rs/seq/index.html
+[docs]: http://www.rust-ci.org/japaric/seq.rs/doc/seq/
