@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/japaric/seq.rs.svg?branch=master)](https://travis-ci.org/japaric/seq.rs)
+
 Macro sugar to initialize almost any collection (`Vec`, `HashMap`, etc).
 
 ## [API Docs][docs]
