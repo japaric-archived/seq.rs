@@ -32,3 +32,35 @@ macro_rules! seq {
     ($($x:expr),+,) => { seq!($($x),+) };
     ($($k:expr => $v:expr),+,) => { seq!($($k => $v),+) };
 }
+
+#[macro_export]
+macro_rules! iter {
+    ($($e:expr),*) => {
+        {
+            struct Iter<T> {
+                i: uint,
+                elems: [Option<T>, ..count_args!($($e),*)]
+            }
+
+            impl<T> Iterator<T> for Iter<T> {
+                fn next(&mut self) -> Option<T> {
+                    if self.i >= self.elems.len() {
+                        return None
+                    }
+                    let n = self.elems[self.i].take();
+                    self.i += 1;
+                    n
+                }
+
+                fn size_hint(&self) -> (uint, Option<uint>) {
+                    let left = self.elems.len() - self.i;
+
+                    (left, Some(left))
+                }
+            }
+
+            Iter { i: 0, elems: [$(Some($e)),*] }
+        }
+    };
+    ($($x:expr),+,) => { iter!($($x),+) };
+}

@@ -5,7 +5,7 @@ extern crate seq;
 extern crate seq_macros;
 
 fn main() {
-    let v: Vec<Box<int>> = seq![
+    let v: Vec<Box<int>> = iter![
         box 0,
         box 1,
         box 2,
@@ -106,6 +106,6 @@ fn main() {
         box 97,
         box 98,
         box 99,
-    ];
+    ].collect();
     println!("{}", v);
 }
