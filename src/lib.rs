@@ -1,3 +1,5 @@
+#![deny(warnings)]
+
 use std::collections::{Bitv, HashMap, HashSet, SmallIntMap, TreeMap, TreeSet};
 use std::hash::Hash;
 

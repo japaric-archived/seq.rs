@@ -1,3 +1,4 @@
+#![deny(warnings)]
 #![feature(macro_rules)]
 
 /// Count the number of arguments
