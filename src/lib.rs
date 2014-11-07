@@ -1,6 +1,6 @@
 #![deny(warnings)]
 
-use std::collections::{Bitv, HashMap, HashSet, SmallIntMap, TreeMap, TreeSet};
+use std::collections::{Bitv, HashMap, HashSet, VecMap, TreeMap, TreeSet};
 use std::hash::Hash;
 
 /// A growable collection
@@ -44,13 +44,13 @@ impl<T> Seq<T> for HashSet<T> where T: Eq + Hash {
     }
 }
 
-impl<T> Seq<(uint, T)> for SmallIntMap<T> {
-    fn with_capacity(_: uint) -> SmallIntMap<T> {
+impl<T> Seq<(uint, T)> for VecMap<T> {
+    fn with_capacity(_: uint) -> VecMap<T> {
         // XXX Ideally `n` should be the biggest key passed to the `seq!` macro
-        SmallIntMap::new()
+        VecMap::new()
     }
 
-    fn add_elem(m: &mut SmallIntMap<T>, (key, value): (uint, T)) {
+    fn add_elem(m: &mut VecMap<T>, (key, value): (uint, T)) {
         m.insert(key, value);
     }
 }
