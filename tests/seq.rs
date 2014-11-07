@@ -4,7 +4,7 @@ extern crate seq;
 #[phase(plugin)]
 extern crate seq_macros;
 
-use std::collections::{Bitv, HashMap, HashSet, SmallIntMap, TreeMap, TreeSet};
+use std::collections::{Bitv, HashMap, HashSet, VecMap, TreeMap, TreeSet};
 
 #[test]
 fn bitv() {
@@ -44,8 +44,8 @@ fn hashset() {
 }
 
 #[test]
-fn smallintmap() {
-    let mut m = SmallIntMap::new();
+fn vecmap() {
+    let mut m = VecMap::new();
     assert_eq!(m, seq!{});
 
     m.insert(2, "two");
