@@ -87,10 +87,12 @@ fn treeset() {
 #[test]
 fn vec() {
     let mut v = Vec::new();
-    assert_eq!(v, seq![]);
+    let rhs: Vec<_> = seq![];
+    assert_eq!(v, rhs);
 
     v.push(1u8);
     v.push(2);
     v.push(3);
-    assert_eq!(v, seq![1, 2, 3]);
+    let rhs: Vec<_> = seq![1, 2, 3];
+    assert_eq!(v, rhs);
 }
