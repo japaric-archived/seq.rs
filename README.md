@@ -35,4 +35,4 @@ seq.rs is dual licensed under the Apache 2.0 license and the MIT license.
 
 See LICENSE-APACHE and LICENSE-MIT for more details.
 
-[docs]: http://www.rust-ci.org/japaric/seq.rs/doc/seq/
+[docs]: http://japaric.github.io/seq.rs/seq/
