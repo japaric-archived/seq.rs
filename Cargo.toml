@@ -4,5 +4,8 @@ name = "seq"
 version = "0.0.0"
 authors = ["Jorge Aparicio <japaric@linux.com>"]
 
+[dependencies.collect]
+git = "https://github.com/gankro/collect-rs"
+
 [dependencies.seq_macros]
 path = "macros"

@@ -1,7 +1,10 @@
 #![deny(warnings)]
 
-use std::collections::{Bitv, HashMap, HashSet, VecMap, TreeMap, TreeSet};
+extern crate collect;
+
+use std::collections::{Bitv, HashMap, HashSet, VecMap};
 use std::hash::Hash;
+use collect::{TreeMap, TreeSet};
 
 /// A growable collection
 pub trait Seq<T> {

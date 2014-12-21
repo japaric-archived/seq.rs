@@ -1,10 +1,12 @@
 #![feature(phase)]
 
+extern crate collect;
 extern crate seq;
 #[phase(plugin)]
 extern crate seq_macros;
 
-use std::collections::{Bitv, HashMap, HashSet, VecMap, TreeMap, TreeSet};
+use std::collections::{Bitv, HashMap, HashSet, VecMap};
+use collect::{TreeMap, TreeSet};
 
 #[test]
 fn bitv() {
