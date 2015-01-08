@@ -6,6 +6,3 @@ authors = ["Jorge Aparicio <japaric@linux.com>"]
 
 [dependencies.collect]
 git = "https://github.com/gankro/collect-rs"
-
-[dependencies.seq_macros]
-path = "macros"

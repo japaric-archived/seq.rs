@@ -1,9 +1,8 @@
 #![feature(phase)]
 
 extern crate collect;
+#[macro_use]
 extern crate seq;
-#[phase(plugin)]
-extern crate seq_macros;
 
 use std::collections::{Bitv, HashMap, HashSet, VecMap};
 use collect::{TreeMap, TreeSet};

@@ -1,8 +1,7 @@
 #![feature(phase)]
 
+#[macro_use]
 extern crate seq;
-#[phase(plugin)]
-extern crate seq_macros;
 
 use std::collections::HashMap;
 

@@ -1,9 +1,0 @@
-[package]
-
-name = "seq_macros"
-version = "0.0.0"
-authors = ["Jorge Aparicio <japaric@linux.com>"]
-
-[[lib]]
-name = "seq_macros"
-plugin = true
