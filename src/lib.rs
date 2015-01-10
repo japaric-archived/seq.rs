@@ -1,8 +1,10 @@
+#![allow(unstable)]
 #![deny(warnings)]
 
 extern crate collect;
 
 use std::collections::{Bitv, HashMap, HashSet, VecMap};
+use std::collections::hash_map;
 use std::hash::Hash;
 use collect::{TreeMap, TreeSet};
 
@@ -42,14 +44,14 @@ macro_rules! seq {
 /// A growable collection
 pub trait Seq<T> {
     /// Creates a new collection with an initial capacity (if applicable)
-    fn with_capacity(uint) -> Self;
+    fn with_capacity(usize) -> Self;
 
     /// Adds a new element to the collection
     fn add_elem(&mut self, T);
 }
 
 impl Seq<bool> for Bitv {
-    fn with_capacity(_: uint) -> Bitv {
+    fn with_capacity(_: usize) -> Bitv {
         // NB Bitv's `with_capacity` + `push` grows the collection beyond its initial capacity
         Bitv::new()
     }
@@ -59,8 +61,8 @@ impl Seq<bool> for Bitv {
     }
 }
 
-impl<K, V> Seq<(K, V)> for HashMap<K, V> where K: Eq + Hash {
-    fn with_capacity(n: uint) -> HashMap<K, V> {
+impl<K, V> Seq<(K, V)> for HashMap<K, V> where K: Eq + Hash<hash_map::Hasher> {
+    fn with_capacity(n: usize) -> HashMap<K, V> {
         HashMap::with_capacity(n)
     }
 
@@ -69,8 +71,8 @@ impl<K, V> Seq<(K, V)> for HashMap<K, V> where K: Eq + Hash {
     }
 }
 
-impl<T> Seq<T> for HashSet<T> where T: Eq + Hash {
-    fn with_capacity(n: uint) -> HashSet<T> {
+impl<T> Seq<T> for HashSet<T> where T: Eq + Hash<hash_map::Hasher> {
+    fn with_capacity(n: usize) -> HashSet<T> {
         HashSet::with_capacity(n)
     }
 
@@ -79,19 +81,19 @@ impl<T> Seq<T> for HashSet<T> where T: Eq + Hash {
     }
 }
 
-impl<T> Seq<(uint, T)> for VecMap<T> {
-    fn with_capacity(_: uint) -> VecMap<T> {
+impl<T> Seq<(usize, T)> for VecMap<T> {
+    fn with_capacity(_: usize) -> VecMap<T> {
         // XXX Ideally `n` should be the biggest key passed to the `seq!` macro
         VecMap::new()
     }
 
-    fn add_elem(&mut self, (key, value): (uint, T)) {
+    fn add_elem(&mut self, (key, value): (usize, T)) {
         self.insert(key, value);
     }
 }
 
 impl<K, V> Seq<(K, V)> for TreeMap<K, V> where K: Ord {
-    fn with_capacity(_: uint) -> TreeMap<K, V> {
+    fn with_capacity(_: usize) -> TreeMap<K, V> {
         // NB There is not a `with_capacity` method in `TreeMap`
         TreeMap::new()
     }
@@ -102,7 +104,7 @@ impl<K, V> Seq<(K, V)> for TreeMap<K, V> where K: Ord {
 }
 
 impl<T> Seq<T> for TreeSet<T> where T: Ord {
-    fn with_capacity(_: uint) -> TreeSet<T> {
+    fn with_capacity(_: usize) -> TreeSet<T> {
         // NB There is not a `with_capacity` method in `TreeSet`
         TreeSet::new()
     }
@@ -113,7 +115,7 @@ impl<T> Seq<T> for TreeSet<T> where T: Ord {
 }
 
 impl<T> Seq<T> for Vec<T> {
-    fn with_capacity(n: uint) -> Vec<T> {
+    fn with_capacity(n: usize) -> Vec<T> {
         Vec::with_capacity(n)
     }
 

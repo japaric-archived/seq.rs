@@ -1,5 +1,3 @@
-#![feature(phase)]
-
 extern crate collect;
 #[macro_use]
 extern crate seq;

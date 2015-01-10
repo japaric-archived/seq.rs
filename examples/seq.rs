@@ -1,5 +1,3 @@
-#![feature(phase)]
-
 #[macro_use]
 extern crate seq;
 
@@ -14,6 +12,6 @@ fn main() {
       'c' => "coconut".to_string(),
     };
 
-    println!("{}", v);
-    println!("{}", m);
+    println!("{:?}", v);
+    println!("{:?}", m);
 }
