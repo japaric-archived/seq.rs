@@ -2,12 +2,12 @@ extern crate collect;
 #[macro_use]
 extern crate seq;
 
-use std::collections::{Bitv, HashMap, HashSet, VecMap};
+use std::collections::{BitVec, HashMap, HashSet, VecMap};
 use collect::{TreeMap, TreeSet};
 
 #[test]
-fn bitv() {
-    let mut v = Bitv::new();
+fn bitvec() {
+    let mut v = BitVec::new();
     assert_eq!(v, seq![]);
 
     v.push(true);

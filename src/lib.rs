@@ -1,10 +1,9 @@
-#![allow(unstable)]
 #![deny(warnings)]
+#![feature(collections)]
 
 extern crate collect;
 
-use std::collections::{Bitv, HashMap, HashSet, VecMap};
-use std::collections::hash_map;
+use std::collections::{BitVec, HashMap, HashSet, VecMap};
 use std::hash::Hash;
 use collect::{TreeMap, TreeSet};
 
@@ -50,10 +49,10 @@ pub trait Seq<T> {
     fn add_elem(&mut self, T);
 }
 
-impl Seq<bool> for Bitv {
-    fn with_capacity(_: usize) -> Bitv {
-        // NB Bitv's `with_capacity` + `push` grows the collection beyond its initial capacity
-        Bitv::new()
+impl Seq<bool> for BitVec {
+    fn with_capacity(_: usize) -> BitVec {
+        // NB BitVec's `with_capacity` + `push` grows the collection beyond its initial capacity
+        BitVec::new()
     }
 
     fn add_elem(&mut self, elem: bool) {
@@ -61,7 +60,7 @@ impl Seq<bool> for Bitv {
     }
 }
 
-impl<K, V> Seq<(K, V)> for HashMap<K, V> where K: Eq + Hash<hash_map::Hasher> {
+impl<K, V> Seq<(K, V)> for HashMap<K, V> where K: Eq + Hash {
     fn with_capacity(n: usize) -> HashMap<K, V> {
         HashMap::with_capacity(n)
     }
@@ -71,7 +70,7 @@ impl<K, V> Seq<(K, V)> for HashMap<K, V> where K: Eq + Hash<hash_map::Hasher> {
     }
 }
 
-impl<T> Seq<T> for HashSet<T> where T: Eq + Hash<hash_map::Hasher> {
+impl<T> Seq<T> for HashSet<T> where T: Eq + Hash {
     fn with_capacity(n: usize) -> HashSet<T> {
         HashSet::with_capacity(n)
     }
